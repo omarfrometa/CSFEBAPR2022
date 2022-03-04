@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Console Applications", "01. Console Applications", "{2EE57FC0-7989-42F3-B2C1-394A140A8C60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.ConsoleApp", "..\CS.ConsoleApp\CS.ConsoleApp.csproj", "{7F8503D2-8462-43C9-BEAF-D2C2F292EA2F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Win32 Applications", "02. Win32 Applications", "{D74F8542-A87C-4D18-B1F8-7F132D51A50B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.Win32", "..\CS.Win32\CS.Win32.csproj", "{F3DB4E1E-0049-4B01-80B4-1D0CE27BB6F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.ConsoleApp", "CS.ConsoleApp\CS.ConsoleApp.csproj", "{7F8503D2-8462-43C9-BEAF-D2C2F292EA2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.Win32", "CS.Win32\CS.Win32.csproj", "{F3DB4E1E-0049-4B01-80B4-1D0CE27BB6F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
