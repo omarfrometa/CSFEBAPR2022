@@ -162,6 +162,8 @@
       <DependentUpon>db.edmx</DependentUpon>
       <LastGenOutput>db.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\deleteIcon1.png" />
+    <None Include="Resources\saveIcon1.png" />
     <None Include="Resources\addIcon.png" />
     <None Include="Resources\saveIcon.png" />
     <None Include="Resources\deleteIcon.png" />
