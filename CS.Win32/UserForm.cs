@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace CS.Win32
 {
-    public partial class UserForm : Form
+    public partial class UserForm : Form, MyInterface
     {
         CSFEBAPR2022Entities db = new CSFEBAPR2022Entities();
         public bool Adding { get; set; }
@@ -44,14 +44,14 @@ namespace CS.Win32
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            getRecords(txtSearch.Text);
+            
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            btnNew.Enabled = true;
-            btnSave.Enabled = false;
-            btnDelete.Enabled = false;
+            //btnNew.Enabled = true;
+            //btnSave.Enabled = false;
+            //btnDelete.Enabled = false;
             gbUserInfo.Enabled = false;
             Adding = false;
             clearFields();
@@ -60,39 +60,12 @@ namespace CS.Win32
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Estas seguro que deseas eliminar este registro?", "CONSTRUCCION DE SOFTWARE", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
-            if (dr == DialogResult.Yes)
-            {
-                Guid UserId = Guid.Parse(txtID.Text);
-                var user = db.User.FirstOrDefault(x=> x.Id == UserId);
-                if (user != null)
-                {
-                    var profile = db.UserProfile.FirstOrDefault(x=> x.UserId == user.Id);
-
-                    db.UserProfile.Remove(profile);
-                    db.SaveChanges();
-
-                    db.User.Remove(user);
-
-                    var rUser = db.SaveChanges() > 0;
-                    if (rUser)
-                    {
-                        getRecords();
-                        clearFields();
-
-                        btnNew.Enabled = true;
-                        btnSave.Enabled = false;
-                        btnDelete.Enabled = false;
-                        gbUserInfo.Enabled = false;
-                        Adding = false;
-                    }
-                }
-            }
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            save();
+            
         }
 
         private void save()
@@ -147,9 +120,9 @@ namespace CS.Win32
             db.SaveChanges();
 
             gbUserInfo.Enabled = false;
-            btnNew.Enabled = true;
-            btnSave.Enabled = false;
-            btnDelete.Enabled = false;
+            //btnNew.Enabled = true;
+            //btnSave.Enabled = false;
+            //btnDelete.Enabled = false;
 
             getRecords();
             clearFields();
@@ -199,21 +172,14 @@ namespace CS.Win32
             txtDisplayName.Text = string.Empty;
             txtCreatedDate.Text = string.Empty;
             chkEnabled.Checked = false;
-            txtSearch.Text = string.Empty;
+            //txtSearch.Text = string.Empty;
 
             gbUserInfo.Enabled = false;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            txtID.Text = Guid.NewGuid().ToString();
-            txtCreatedDate.Text = DateTime.Now.ToString();
-
-            gbUserInfo.Enabled = true;
-            btnNew.Enabled = false;
-            btnSave.Enabled = true;
-
-            Adding = true;
+            
         }
 
         private void dgvRecords_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -270,9 +236,9 @@ namespace CS.Win32
                     chkEnabled.Checked = user.Enabled;
 
                     gbUserInfo.Enabled = true;
-                    btnNew.Enabled = false;
-                    btnSave.Enabled = true;
-                    btnDelete.Enabled = true;
+                    //btnNew.Enabled = false;
+                    //btnSave.Enabled = true;
+                    //btnDelete.Enabled = true;
                 }
             }
         }
@@ -280,6 +246,60 @@ namespace CS.Win32
         private void chkEnabled_CheckedChanged(object sender, EventArgs e)
         {
             chkEnabled.Text = chkEnabled.Checked ? "Activo" : "Inactivo";
+        }
+
+        public void New()
+        {
+            txtID.Text = Guid.NewGuid().ToString();
+            txtCreatedDate.Text = DateTime.Now.ToString();
+
+            gbUserInfo.Enabled = true;
+            //btnNew.Enabled = false;
+            //btnSave.Enabled = true;
+
+            Adding = true;
+        }
+
+        public void Save()
+        {
+            save();
+        }
+
+        public void Remove()
+        {
+            DialogResult dr = MessageBox.Show("Estas seguro que deseas eliminar este registro?", "CONSTRUCCION DE SOFTWARE", MessageBoxButtons.YesNo, MessageBoxIcon.Hand);
+            if (dr == DialogResult.Yes)
+            {
+                Guid UserId = Guid.Parse(txtID.Text);
+                var user = db.User.FirstOrDefault(x => x.Id == UserId);
+                if (user != null)
+                {
+                    var profile = db.UserProfile.FirstOrDefault(x => x.UserId == user.Id);
+
+                    db.UserProfile.Remove(profile);
+                    db.SaveChanges();
+
+                    db.User.Remove(user);
+
+                    var rUser = db.SaveChanges() > 0;
+                    if (rUser)
+                    {
+                        getRecords();
+                        clearFields();
+
+                        //btnNew.Enabled = true;
+                        //btnSave.Enabled = false;
+                        //btnDelete.Enabled = false;
+                        gbUserInfo.Enabled = false;
+                        Adding = false;
+                    }
+                }
+            }
+        }
+
+        public void Search(string input)
+        {
+            getRecords(input);
         }
     }
 }
