@@ -76,9 +76,14 @@ namespace CS.Win32
             chkEnabled.Checked = false;
         }
 
-        private void getRecords()
+        private void getRecords(string input = "")
         {
             var countries = db.Country.ToList();
+
+            if (!string.IsNullOrEmpty(input))
+            {
+                countries = countries.Where(x => x.Name.ToLower().Contains(input.ToLower())).ToList();
+            }
 
             dgvRecords.DataSource = countries;
         }
@@ -86,6 +91,11 @@ namespace CS.Win32
         private void btnCancel_Click(object sender, EventArgs e)
         {
             clearfields();
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            getRecords(txtName.Text);
         }
     }
 }
