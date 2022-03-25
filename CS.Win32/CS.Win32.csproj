@@ -55,29 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Country.cs">
-      <DependentUpon>db.tt</DependentUpon>
-    </Compile>
     <Compile Include="CountryForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CountryForm.Designer.cs">
       <DependentUpon>CountryForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="db.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>db.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="db.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>db.tt</DependentUpon>
-    </Compile>
-    <Compile Include="db.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>db.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -86,9 +68,6 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MyInterface.cs" />
-    <Compile Include="PlaceBirth.cs">
-      <DependentUpon>db.tt</DependentUpon>
-    </Compile>
     <Compile Include="PlaceBirthForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,17 +82,11 @@
     <Compile Include="SplashForm.Designer.cs">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>db.tt</DependentUpon>
-    </Compile>
     <Compile Include="UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserProfile.cs">
-      <DependentUpon>db.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CountryForm.resx">
       <DependentUpon>CountryForm.cs</DependentUpon>
@@ -140,13 +113,6 @@
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="db.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>db.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="db.edmx.diagram">
-      <DependentUpon>db.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -162,16 +128,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="db.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>db.Context.cs</LastGenOutput>
-      <DependentUpon>db.edmx</DependentUpon>
-    </Content>
-    <Content Include="db.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>db.edmx</DependentUpon>
-      <LastGenOutput>db.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\findIcon.png" />
     <None Include="Resources\trashIcon.png" />
     <None Include="Resources\splash-image.png" />
@@ -185,6 +141,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CS.BO\CS.BO.csproj">
+      <Project>{efa4bd3c-8897-43ef-8cf6-9a535c3cb238}</Project>
+      <Name>CS.BO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
