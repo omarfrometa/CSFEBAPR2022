@@ -1,0 +1,47 @@
+﻿@model List<CS.BO.User>
+@{
+    ViewBag.Title = "Index";
+}
+<a href="/User/Create" class="btn btn-primary" style="float:right">Nuevo Usuario</a>
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Correo Electronico
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Visible
+                    </th>
+                    <th>
+                        Fecha de Creacion
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.Email</td>
+                        <td>@user.DisplayName</td>
+                        <td>@user.Enabled</td>
+                        <td>@user.CreatedDate.ToString("MMM dd, yyyy")</td>
+                        <td>
+                            <button type="button" class="btn btn-primary">Editar</button>
+                            <button type="button" class="btn btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
